@@ -11,7 +11,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+# docker login -u nikitavid
+# dckr_pat_bvPWCdDv_MrCfh09scJKMkrzM1s
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
