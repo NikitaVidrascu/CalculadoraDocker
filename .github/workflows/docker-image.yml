@@ -12,9 +12,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    
     - name: Login en Docker
       run: |
         echo "Logueandose...."
         docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_TOKEN}}
+        
+    - name: Montar imagen
+      run: docker build -t nikitavid/calculadora:latest .
+
+    - name: Subir imagen a dockerhub
+      run: |
+        echo "Subiendo imagen..."
+        docker push nikitavid/calculadora:latest
