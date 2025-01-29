@@ -3,17 +3,18 @@ name: Docker Image CI
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
 
   build:
 
     runs-on: ubuntu-latest
-# docker login -u nikitavid
-# dckr_pat_bvPWCdDv_MrCfh09scJKMkrzM1s
+
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Login en Docker
+      run: |
+        echo "Logueandose...."
+        docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_TOKEN}}
