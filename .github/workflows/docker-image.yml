@@ -19,9 +19,9 @@ jobs:
         docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_TOKEN}}
         
     - name: Montar imagen
-      run: docker build -t nikitavid/calculadora:latest .
+      run: docker build -t ${{secrets.DOCKER_USER}}/calculadora:latest .
 
     - name: Subir imagen a dockerhub
       run: |
         echo "Subiendo imagen..."
-        docker push nikitavid/calculadora:latest
+        docker push ${{secrets.DOCKER_USER}}/calculadora:latest
