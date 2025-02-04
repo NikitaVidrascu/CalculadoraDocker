@@ -17,7 +17,7 @@ jobs:
           php-version: '8.2'
 
       - name: Instalar dependencias
-        run: composer install --no-dev
+        run: composer install
 
       - name: Ejecutar tests
         run: vendor/bin/phpunit --testdox tests
