@@ -5,7 +5,27 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Instalar PHP
+        uses: shivammathur/setup-php@2.32.0
+        with:
+          php-version: '8.2'
+
+      - name: Instalar dependencias
+        run: composer install --no-dev
+
+      - name: Ejecutar tests
+        run: vendor/bin/phpunit
+          
+        
+
+  construir:
+    needs: tests
     runs-on: ubuntu-latest
 
     steps:
