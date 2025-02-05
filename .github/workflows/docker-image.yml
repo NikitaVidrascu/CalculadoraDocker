@@ -29,7 +29,7 @@ jobs:
 
     steps:
     - name: Obtener tag
-    - uses: olegtarasov/get-tag@v2.1.4
+      uses: olegtarasov/get-tag@v2.1.4
       id: tagName
       with:
         tagname: ${{ steps.tagName.outputs.tag }}
