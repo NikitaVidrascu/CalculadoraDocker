@@ -21,7 +21,7 @@ jobs:
         run: composer install
 
       - name: Ejecutar tests
-        run: vendor/bin/phpunit --testdox
+        run: vendor/bin/phpunit --testdox tests
 
   construir:
     needs: tests
