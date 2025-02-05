@@ -28,8 +28,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-
     - name: Obtener tag
     - uses: olegtarasov/get-tag@v2.1.4
       id: tagName
@@ -41,6 +39,8 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_TOKEN }}
+
+    - uses: actions/checkout@v4
 
     - name: Configurar QEMU
       uses: docker/setup-qemu-action@v3.3.0
