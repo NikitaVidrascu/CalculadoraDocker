@@ -51,9 +51,6 @@ jobs:
     - name: Construir y subir imagen Docker
       uses: docker/build-push-action@v6.13.0
       with:
-        context: .
         push: true
-        tags: |
-          ${{ secrets.DOCKER_USER }}/calculadora:latest
-          ${{ secrets.DOCKER_USER }}/calculadora:${{ steps.tagName.outputs.tag }}
+        tags: ${{ secrets.DOCKER_USER }}/calculadora:${{ steps.tagName.outputs.tag }}
         platforms: linux/amd64,linux/arm64
