@@ -6,7 +6,6 @@ on:
       - "*"
 
 jobs:
-
   tests:
     runs-on: ubuntu-latest
     steps:
@@ -16,13 +15,13 @@ jobs:
         uses: shivammathur/setup-php@2.32.0
         with:
           php-version: '8.2'
-          tools: composer
+          extensions: pdo, pdo_mysql
 
       - name: Instalar dependencias
         run: composer install
 
       - name: Ejecutar tests
-        run: vendor/bin/phpunit --testdox tests
+        run: vendor/bin/phpunit --testdox tests/CalculadoraTest.php
 
   construir:
     needs: tests
@@ -53,5 +52,5 @@ jobs:
       uses: docker/build-push-action@v6.13.0
       with:
         push: true
-        tags: ${{ secrets.DOCKER_USER }}/calculadora:${{ steps.tagName.outputs.tag }}
+        tags: ${{secrets.DOCKER_USER}}/caluladora:${{ steps.tagName.outputs.tag }}
         platforms: linux/amd64,linux/arm64
